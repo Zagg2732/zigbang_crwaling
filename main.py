@@ -31,7 +31,6 @@ FILE_NAME = DIR + now_date + '.xlsx'
 
 def get_already_crwaled_id_set():  # 기존 크롤링했던 id set update
     global already_crawled_set
-    # f = open("C:/Users/Lenovo/Desktop/크롤링/크롤링했던아이디.txt", 'r')
     f = open('./files/크롤링했던아이디.txt', 'r')
 
     origin_text = f.readline()
@@ -116,14 +115,7 @@ def get_final_info_by_room_id_list(id_list): # room_id 로 디테일정보 구�
         z_m2 = info_json['item']['전용면적_m2']
         g_m2 = info_json['item']['공급면적_m2']
         text = info_json['item']['description']
-        re.sub('[\r\n😊🗨🤙💗⭐=☝✔❗★❤✅➖◈▶⭕⚠❌▒Ω♥💯♣🏠🍓💟📌▨🌈■◆🥝💙]', '', text)
-        # text = text.replace('\\n', '').replace('\\r', '').replace('"', '').replace('⭐', '').replace('=', '').replace(
-        #     '☝', '').replace('✔', '').replace('❗', '').replace('★', '').replace('&amp;', '').replace('❤', '').replace(
-        #     '✅', '').replace('➖', '').replace('◈', '').replace('▶', '').replace('⭕', '').replace('⚠', '').replace('❌',
-        #                                                                                                           '').replace(
-        #     '#', '').replace('&gt;', '').replace('☆', '').replace('&quot;', '').replace('▒', '').replace('Ω',
-        #                                                                                                  '').replace(
-        #     '♥', '').replace('💯', '').replace('♣', '')
+        text = re.sub('[\r\n😊🗨🤙💗⭐=☝✔❗★❤✅➖◈▶⭕⚠❌▒Ω♥💯♣🏠🍓💟📌▨🌈■◆🥝💙]', '', text)
         condition1 = text.find('중기청')
         condition2 = text.find('중소기업')
         if condition1 > 0 or condition2 > 0:
